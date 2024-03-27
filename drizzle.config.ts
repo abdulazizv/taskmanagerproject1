@@ -2,8 +2,8 @@ import 'dotenv/config';
 import type {Config} from 'drizzle-kit';
 
 export default {
-    schema: './src/models',
-    out: './drizzle',
+    schema: 'database/models',
+    out: 'drizzle',
     driver: 'mysql2',
     dbCredentials: {
       host: String(process.env.DB_HOST),

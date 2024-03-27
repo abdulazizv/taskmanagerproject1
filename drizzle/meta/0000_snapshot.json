@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "9e3f0277-5ec0-4470-a36f-013bdb22e991",
+  "id": "3251faed-ffdf-4702-8f4b-e101ea020ee1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "tasks": {
