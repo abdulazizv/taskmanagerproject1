@@ -16,7 +16,14 @@
     "outDir": "./dist",
     "baseUrl": "./src",
     "paths": {
-      "*": ["*", "src/*"]
+      "@package": ["package.json"],
+      "@config": ["./config/index.js"]
+      // "@logger": ["./src/init/logger"],
+      // "@interfaces": ["./src/interfaces"],
+      // "@database/*": ["./src/init/database/*"],
+      // "@messagebroker/*": ["./src/init/messagebroker/*"],
+      // "@utils/*": ["./src/utils/*"],
+      // "@public": ["./src/public"],
     }
   },
   "include": ["src/**/*.ts"],
