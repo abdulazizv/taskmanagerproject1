@@ -9,4 +9,4 @@ export const connection = await mysql.createConnection({
   multipleStatements: true,
 });
 
-export const db = drizzle(connection);
+export const c = drizzle(connection);
