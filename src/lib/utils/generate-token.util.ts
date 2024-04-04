@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { JwtPayload } from 'jsonwebtoken';
-import config from '../../../config';
+import config from '../../config/index.js';
 
 function verifyToken(token: string,secret: string) {
     try {

@@ -10,8 +10,13 @@ async function createUser(data: any) {
 }
 
 async function getUserById(id: number) {
-    
-    return await db.select().from(users).where(eq(users.id, id));
+    const userData =  await db.select().from(users).where(eq(users.id, id));
+
+    if(!userData) {
+        return null;
+    }
+
+    return userData;
 }
 
 

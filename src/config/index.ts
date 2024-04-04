@@ -1,4 +1,4 @@
-import packageJson from "../package.json";
+import packageJson from "../../package.json";
 import dotenv from "dotenv";
 
 const local_env: dotenv.DotenvConfigOutput | undefined = dotenv.config();

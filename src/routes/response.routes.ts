@@ -1,6 +1,5 @@
-import Koa from "koa";
 import Router from "koa-router";
-import Response from "../lib/services/response.service";
+import Response from "../lib/services/response.service.js";
 import lodash from "lodash";
 import { Context } from "koa";
 

@@ -1,6 +1,6 @@
 import Koa from 'koa';
 import logger from 'koa-logger';
-import config from "../config/index.js";
+import config from "./config/index.js";
 import { router } from './routes/index.routes.js'; 
 
 const app = new Koa();

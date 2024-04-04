@@ -1,6 +1,6 @@
 import { Context } from "koa";
-import * as UserRepository from '../repository/user.repository';
-import * as JwtService from "lib/utils/generate-token.util";
+import * as UserRepository from '../repository/user.repository.js';
+import * as JwtService from "../lib/utils/generate-token.util.js";
 
 const createUser = async(ctx: Context) => {
     const data: any = ctx.body;
@@ -17,7 +17,7 @@ const createUser = async(ctx: Context) => {
     }
 
     const token = JwtService.signToken(payload);
-    response[0].insertId;
+
     await UserRepository.updateUserById(response[0].insertId,{refreshToken: token})
 
     const res = {
@@ -25,7 +25,8 @@ const createUser = async(ctx: Context) => {
         message: "OK",
         token
     }
-    return res;
+
+    return ctx.ok(res);
 }
 
 const getUserById = async(ctx: Context) => {
@@ -33,7 +34,7 @@ const getUserById = async(ctx: Context) => {
 
     const data = await UserRepository.getUserById(+paramsId);
 
-    return data;
+    return ctx.ok(200,{ data })
 }
 
 const updateUser = async(ctx: Context) => {
@@ -42,7 +43,11 @@ const updateUser = async(ctx: Context) => {
 
     const response = await UserRepository.updateUserById(+paramsId,data);
 
-    return response;
+    if (!response) {
+        return ctx.error(400,{ msg: "Not existed data"});
+    }
+
+    return ctx.ok(200, { data: response })
 }
 
 const deleteUser = async(ctx: Context) => {
@@ -50,7 +55,11 @@ const deleteUser = async(ctx: Context) => {
 
     const response = await UserRepository.deleteUserById(+paramsId);
 
-    return response;
+    if(!response) {
+        return ctx.error(404,{ msg: "Not found this user"})
+    }
+
+    return ctx.ok(200,{ message: "successfully deleted"})
 }
 
 export { createUser,getUserById,updateUser,deleteUser }

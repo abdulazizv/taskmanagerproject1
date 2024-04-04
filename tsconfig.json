@@ -17,7 +17,7 @@
     "baseUrl": "./src",
     "paths": {
       "@package": ["package.json"],
-      "@config": ["./config/index.js"]
+      "@config": ["src/config/index.js"]
       // "@logger": ["./src/init/logger"],
       // "@interfaces": ["./src/interfaces"],
       // "@database/*": ["./src/init/database/*"],
@@ -27,5 +27,5 @@
     }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules","src/config",]
 }
