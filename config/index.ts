@@ -18,6 +18,11 @@ export const server = {
 	port: Number(get_env("PORT", 1131)),
 };
 
+export const jwt = {
+    secret: String(get_env("SECRET_KEY","secret_key"))
+}
+
 export default {
-    server
+    server,
+    jwt
 }

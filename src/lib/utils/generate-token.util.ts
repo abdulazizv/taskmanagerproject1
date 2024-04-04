@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { JwtPayload } from 'jsonwebtoken';
+import config from '../../../config';
 
 function verifyToken(token: string,secret: string) {
     try {
@@ -22,7 +23,8 @@ function decodeToken(token: string): JwtPayload | null {
     }
 }
 
-function signToken(payload: any, secret: string, options?: jwt.SignOptions): string {
+function signToken(payload: any, options?: jwt.SignOptions): string {
+    let secret = config.jwt.secret;
     return jwt.sign(payload, secret, options);
 }
 

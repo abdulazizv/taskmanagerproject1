@@ -6,11 +6,11 @@ import { eq } from 'drizzle-orm';
 async function createUser(data: any) {
     const { name,email } = data;
 
-    return await db.insert(users).values({ userName: name,email: email })
+    return await db.insert(users).values({ userName: name,email: email }).execute()
 }
 
 async function getUserById(id: number) {
-    // Query the database to retrieve the user by ID
+    
     return await db.select().from(users).where(eq(users.id, id));
 }
 
@@ -22,6 +22,8 @@ async function updateUserById(id: number, data: any) {
 
 
 async function deleteUserById(id: number) {
-    // Delete the user from the database
+    
     return await db.delete(users).where(eq(users.id, id)).execute();
 }
+
+export { createUser,getUserById,deleteUserById,updateUserById }
