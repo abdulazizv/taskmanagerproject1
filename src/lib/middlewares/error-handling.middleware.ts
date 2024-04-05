@@ -1,5 +1,5 @@
 import { Context, Next } from 'koa';
-import ApiError from './error/api-error';
+import ApiError from './error/api-error.js';
 
 export async function errorHandler(err: Error, ctx: Context, next: Next): Promise<void> {
   console.log(err.message);

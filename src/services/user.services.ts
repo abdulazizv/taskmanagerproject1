@@ -3,8 +3,8 @@ import * as UserRepository from '../repository/user.repository.js';
 import * as JwtService from "../lib/utils/generate-token.util.js";
 
 const createUser = async(ctx: Context) => {
-    const data: any = ctx.body;
 
+    const data: any = ctx.request.body;
     const response = await UserRepository.createUser(data)
 
     if(!response) {
@@ -21,12 +21,11 @@ const createUser = async(ctx: Context) => {
     await UserRepository.updateUserById(response[0].insertId,{refreshToken: token})
 
     const res = {
-        success: true,
         message: "OK",
         token
     }
 
-    return ctx.ok(res);
+    return ctx.ok(200,res );
 }
 
 const getUserById = async(ctx: Context) => {
@@ -34,7 +33,7 @@ const getUserById = async(ctx: Context) => {
 
     const data = await UserRepository.getUserById(+paramsId);
 
-    return ctx.ok(200,{ data })
+    return ctx.ok(200,{ user: data })
 }
 
 const updateUser = async(ctx: Context) => {
